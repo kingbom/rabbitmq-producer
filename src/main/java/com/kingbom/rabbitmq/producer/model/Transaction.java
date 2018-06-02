@@ -24,6 +24,17 @@ public class Transaction {
 
     private LocalDateTime txDate = LocalDateTime.now();
 
+    public Transaction() {
+    }
+
+    public Transaction(String id, String merchantId, String campaignId, String memberId, BigDecimal sumTotal) {
+        this.id = id;
+        this.merchantId = merchantId;
+        this.campaignId = campaignId;
+        this.memberId = memberId;
+        this.sumTotal = sumTotal;
+    }
+
     public String getId() {
         return id;
     }

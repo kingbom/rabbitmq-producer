@@ -27,6 +27,6 @@ public class RabbitMQSender {
 
     public void send(Transaction transaction) {
         rabbitTemplate.convertAndSend(exchange, routingKey, transaction);
-        log.debug("Send transaction id : {} member id : {} ", transaction.getId(), transaction.getMemberId());
+        log.info("Send transaction id : {} member id : {} ", transaction.getId(), transaction.getMemberId());
     }
 }

@@ -20,13 +20,13 @@ public class TransactionRest {
     private RabbitMQSender rabbitMQSender;
 
     @PostMapping("/transactions")
-    public String producers(@RequestBody Transaction request){
+    public String producer(@RequestBody Transaction request){
         rabbitMQSender.send(request);
         return "Message sent transaction to the RabbitMQ Successfully";
     }
 
     @PostMapping("/transactions/multi")
-    public String producer(@RequestBody TransactionRequest request){
+    public String producers(@RequestBody TransactionRequest request){
         request.getTransactions()
                 .stream()
                 .forEach(transaction -> rabbitMQSender.send(transaction));
