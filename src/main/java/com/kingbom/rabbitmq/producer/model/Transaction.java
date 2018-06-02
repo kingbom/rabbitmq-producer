@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 /**
  * Created by bombay on 2/6/2018 AD.
@@ -21,8 +20,6 @@ public class Transaction {
     private String memberId;
 
     private BigDecimal sumTotal;
-
-    private LocalDateTime txDate = LocalDateTime.now();
 
     public Transaction() {
     }
@@ -75,11 +72,4 @@ public class Transaction {
         this.sumTotal = sumTotal;
     }
 
-    public LocalDateTime getTxDate() {
-        return txDate;
-    }
-
-    public void setTxDate(LocalDateTime txDate) {
-        this.txDate = txDate;
-    }
 }
