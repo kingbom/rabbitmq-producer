@@ -2,7 +2,7 @@ package com.kingbom.rabbitmq.producer.controller;
 
 import com.kingbom.rabbitmq.producer.dto.TransactionRequest;
 import com.kingbom.rabbitmq.producer.model.Transaction;
-import com.kingbom.rabbitmq.producer.service.RabbitMQSender;
+import com.kingbom.rabbitmq.producer.service.TransactionSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class TransactionRest {
 
     @Autowired
-    private RabbitMQSender rabbitMQSender;
+    private TransactionSender transactionSender;
 
     @PostMapping("/transactions")
     public String producer(@RequestBody Transaction request){
-        rabbitMQSender.send(request);
+        transactionSender.send(request);
         return "Message sent transaction to the RabbitMQ Successfully";
     }
 
@@ -29,7 +29,7 @@ public class TransactionRest {
     public String producers(@RequestBody TransactionRequest request){
         request.getTransactions()
                 .stream()
-                .forEach(transaction -> rabbitMQSender.send(transaction));
+                .forEach(transaction -> transactionSender.send(transaction));
         return "Message sent transaction to the RabbitMQ Successfully";
     }
 }

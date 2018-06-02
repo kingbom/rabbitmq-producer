@@ -12,9 +12,9 @@ import org.slf4j.LoggerFactory;
  * Created by bombay on 2/6/2018 AD.
  */
 @Service
-public class RabbitMQSender {
+public class TransactionSender {
 
-    private final Logger log = LoggerFactory.getLogger(RabbitMQSender.class);
+    private final Logger log = LoggerFactory.getLogger(TransactionSender.class);
 
     @Autowired
     private AmqpTemplate rabbitTemplate;
